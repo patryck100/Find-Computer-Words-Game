@@ -1,5 +1,6 @@
 package com.game.find.computer.words.game;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /*
@@ -24,7 +25,7 @@ public class FCWGameApp {
         String p1Word, p2Word;
         double p1Points, p2Points, p1Total, p2Total;
         String Winner;
-        String letters;
+        String[] letters = new String[12];
         
         /* DECLARE AND CREATE OBJECTS */
         FCWGame fcwg = new FCWGame();
@@ -43,19 +44,19 @@ public class FCWGameApp {
         
         //This loop allows the user to enter the amount of rounds they want to play
         for (int r = 0; r < nRounds; r = r + 1){
-            letters = fcwg.getRLetter();
+            letters = fcwg.getrLetters();
                              
             
-            JOptionPane.showMessageDialog(null, "Make a valid word by using only those letters once each: " + letters);
+            JOptionPane.showMessageDialog(null, "Make a valid word by using only those letters once each: " + Arrays.toString(letters));
             p1Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
-                                                                "\nLetters: " + letters);
-            fcwg.setP1Word(p1Word);
+                                                                "\nLetters: " + Arrays.toString(letters));
+            fcwg.setP1Word(p1Word.toUpperCase());
             fcwg.computeP1();
             p2Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
-                                                                "\nLetters: " + letters +
+                                                                "\nLetters: " + Arrays.toString(letters) +
                                                                 "\nYour are not allowed to use the word: " + p1Word);
             fcwg.computeP2();
-            fcwg.setP2Word(p2Word);
+            fcwg.setP2Word(p2Word.toUpperCase());
             
             
             
