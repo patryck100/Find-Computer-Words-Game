@@ -19,34 +19,33 @@ public class FCWGame {
     /* DATA MEMBERS */
     private int nRounds;
     private String p1Word;
-    private String p2Word;
-    private double p1Points, p2Points;
+    private String p2Word;    
+    private double [] p1Points, p2Points;
     private double p1Total, p2Total;
-    //private String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private String [] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-    private String [] validWords = {"algorithm", "application", "backup", "bit", "buffer", "bandwidth", "broadband", "bug", "binary", "browser", "bus", "cache", "command", "computer", "cookie", "compiler", "cyberspace", "compress", "configure", "database", "digital", "data", "debug", "desktop", "disk", "domain", "decompress", "development",
-        "download", "dynamic", "email", "encryption", "firewall", "flowchart", "file", "folder", "graphics", "hyperlink", "host", "hardware", "icon", "inbox", "internet", "kernel", "keyword", "keyboard", "laptop", "login", "logic", "malware", "motherboard", "mouse", "mainframe", "memory", "monitor", "multimedia", "network", "node", "offline", "online",
-        "path", "process", "protocol", "password", "phishing", "platform", "program", "portal", "privacy", "programmer", "queue", "resolution", "root", "restore", "router", "reboot", "runtime", "screen", "security", "shell", "snapshot", "spam", "screenshot", "server", "script", "software", "spreadsheet", "storage", "syntax", "table", "template", "thread", "terminal", "username", "virtual", "virus", "web", "website", "window", "wireless"};
+    private final String [] alphabet;
+    private final String [] validWords;
     private String [] rLetters;
     //private StringBuffer rLetter;
-    private ArrayList<String> wordList = new ArrayList<String>(Arrays.asList(validWords));
-    private ArrayList<String> randomLetters = new ArrayList<String>(Arrays.asList(rLetters));
+    private final ArrayList<String> wordList;
+    private ArrayList<String> randomLetters;
     
     /* --- CONSTRUCTOR ---*/
     
     
     public FCWGame() {
-        nRounds = 0;
-        p1Word = "";
-        p2Word = "";
-        p1Points = 0.0;
-        p2Points = 0.0;
+        this.validWords = new String[]{"algorithm", "application", "backup", "bit", "buffer", "bandwidth", "broadband", "bug", "binary", "browser", "bus", "cache", "command", "computer", "cookie", "compiler", "cyberspace", "compress", "configure", "database", "digital", "data", "debug", "desktop", "disk", "domain", "decompress", "development", "download", "dynamic", "email", "encryption", "firewall", "flowchart", "file", "folder", "graphics", "hyperlink", "host", "hardware", "icon", "inbox", "internet", "kernel", "keyword", "keyboard", "laptop", "login", "logic", "malware", "motherboard", "mouse", "mainframe", "memory", "monitor", "multimedia", "network", "node", "offline", "online", "path", "process", "protocol", "password", "phishing", "platform", "program", "portal", "privacy", "programmer", "queue", "resolution", "root", "restore", "router", "reboot", "runtime", "screen", "security", "shell", "snapshot", "spam", "screenshot", "server", "script", "software", "spreadsheet", "storage", "syntax", "table", "template", "thread", "terminal", "username", "virtual", "virus", "web", "website", "window", "wireless"};
+        this.alphabet = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        this.nRounds = nRounds;
+        this.p1Word = p1Word;
+        this.p2Word = p2Word;
+        p1Points = new double [nRounds];
+        p2Points = new double [nRounds];
         p1Total = 0.0;
         p2Total = 0.0;
         rLetters = new String [12];
         //rLetter = new StringBuffer();
-        ArrayList<String> wordList = new ArrayList<String>(Arrays.asList(validWords));
-        ArrayList<String> randomLetters = new ArrayList<String>(Arrays.asList(rLetters));
+        wordList = new ArrayList<String>(Arrays.asList(validWords));
+        randomLetters = new ArrayList<String>(Arrays.asList(rLetters));
     }
 
     /*--- SETTERS ---*/
@@ -65,7 +64,7 @@ public class FCWGame {
     
     /*--- PROCESS --- */
     public void computeP1(){
-        if (wordList.contains(p1Word)){
+        if (wordList.contains(p1Word.toLowerCase())){
             
             for (int nLetters = 0; nLetters < p1Word.length(); nLetters++){
                 if (randomLetters.contains(p1Word.charAt(nLetters))){
@@ -73,14 +72,7 @@ public class FCWGame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Nop, not this time");
                 }
-            }
-                if(p1Word.contains("a") && p1Word.contains("e")){
-                    JOptionPane.showMessageDialog(null, "That is a valid word, you got 2.5 points");
-                    p1Points = 2.5;
-                } else{
-                    p1Points = p1Word.length();
-                    JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p1Points + " points");
-                }          
+            }         
         }else {
             JOptionPane.showMessageDialog(null, "no points");
         }
@@ -88,7 +80,7 @@ public class FCWGame {
     }
     
     public void computeP2(){
-        if (wordList.contains(p2Word)){
+        if (wordList.contains(p2Word.toLowerCase())){
             if (!p2Word.equals(p1Word)){
                 JOptionPane.showMessageDialog(null, "Valid word :)");
             }else {
@@ -106,9 +98,22 @@ public class FCWGame {
 
     /* Generates 12 letters */
     public String[] getrLetters() {
-        for (int i = 0; i < 12; i++){
-            rLetters[i] = alphabet[(int)(Math.random()*26)];
-        }
+        //for (int i = 0; i < 12; i++){
+          //  rLetters[i] = alphabet[(int)(Math.random()*26)];
+        //}
+        rLetters [0] = "A";
+        rLetters [1] = "A";
+        rLetters [2] = "M";
+        rLetters [3] = "E";
+        rLetters [4] = "L";
+        rLetters [5] = "I";
+        rLetters [6] = "P";
+        rLetters [7] = "T";
+        rLetters [8] = "J";
+        rLetters [9] = "C";
+        rLetters [10] = "M";
+        rLetters [11] = "N";
+        
         return rLetters;
     }
 
@@ -128,13 +133,48 @@ public class FCWGame {
         return rLetter.toString();
     } */
 
-    public double getP1Points() {
+    public double[] getP1Points() {
+        for (int i = 0; i < nRounds; i++){
+             if (wordList.contains(p1Word.toLowerCase())){
+                 if(p1Word.contains("a") && p1Word.contains("e")){
+                     JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p1Points[i] + " points for the round: " + (i+1));
+                     p1Points[i] = 2.5;
+                 } else {
+                     p1Points[i] = p1Word.length();
+                     JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p1Points[i] + " points for the round: " + (i+1));
+                 }
+             } else {
+                 p1Points[i] = 0.0;
+                JOptionPane.showMessageDialog(null, "Sorry, that is not a valid word. You got " + p1Points[i] + " points for the round: " + (i+1)); 
+             }
+        }
         return p1Points;
     }
 
-    public double getP2Points() {
+    public double[] getP2Points() {
+        for (int i = 0; i < nRounds; i++){
+             if (wordList.contains(p2Word.toLowerCase())){
+                 if (!p2Word.equals(p1Word)){
+                    if(p2Word.contains("a") && p2Word.contains("e")){
+                        JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p2Points[i] + " points for the round: " + (i+1));
+                        p2Points[i] = 2.5;
+                    } else {
+                        p2Points[i] = p2Word.length();
+                        JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p2Points[i] + " points for the round: " + (i+1));
+                    }
+                 }else {
+                     p2Points[i] = 0.0;
+                     JOptionPane.showMessageDialog(null, "Sorry, you can not use the word " + p1Word +  " you got " + p2Points[i] + " points for the round: " + (i+1));
+                 }
+             } else {
+                 p2Points[i] = 0.0;
+                 JOptionPane.showMessageDialog(null, "Sorry, that is not a valid word. You got " + p2Points[i] + " points for the round: " + (i+1));
+             }           
+        }
         return p2Points;
     }
+
+
 
     public double getP1Total() {
         return p1Total;
