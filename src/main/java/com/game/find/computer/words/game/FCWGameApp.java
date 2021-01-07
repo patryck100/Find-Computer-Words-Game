@@ -23,9 +23,11 @@ public class FCWGameApp {
         /* DATA MEMBERS */
         int nRounds = 0;
         String p1Word, p2Word;
-        double p1Points, p2Points, p1Total, p2Total;
+        double[] p1Points, p2Points;
+        double p1Total, p2Total;
         String Winner;
         String[] letters = new String[12];
+        int round = 0;
         
         /* DECLARE AND CREATE OBJECTS */
         FCWGame fcwg = new FCWGame();
@@ -40,23 +42,26 @@ public class FCWGameApp {
         
         /* INPUT */
         nRounds = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of rounds you would like to play: "));
-        fcwg.setnRounds(nRounds);
+        p1Points = new double [nRounds];
         
         //This loop allows the user to enter the amount of rounds they want to play
         for (int r = 0; r < nRounds; r = r + 1){
             letters = fcwg.getrLetters();
-                             
+            fcwg.setP1Points(p1Points);                 
+            round++;
+            fcwg.setnRounds(round);
             
             JOptionPane.showMessageDialog(null, "Make a valid word by using only those letters once each: " + Arrays.toString(letters));
             p1Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
                                                                 "\nLetters: " + Arrays.toString(letters));
-            fcwg.setP1Word(p1Word.toUpperCase());
-            fcwg.computeP1();
+            fcwg.setP1Word(p1Word);
+            p1Points = fcwg.getP1Points();
             p2Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
                                                                 "\nLetters: " + Arrays.toString(letters) +
                                                                 "\nYour are not allowed to use the word: " + p1Word);
-            fcwg.computeP2();
-            fcwg.setP2Word(p2Word.toUpperCase());
+            fcwg.setP2Word(p2Word);
+            p2Points = fcwg.getP2Points();
+            
             
             
             
