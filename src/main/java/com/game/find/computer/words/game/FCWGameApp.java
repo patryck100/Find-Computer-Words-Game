@@ -43,6 +43,7 @@ public class FCWGameApp {
         /* INPUT */
         nRounds = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of rounds you would like to play: "));
         p1Points = new double [nRounds];
+        p2Points = new double [nRounds];
         
         //This loop allows the user to enter the amount of rounds they want to play
         for (int r = 0; r < nRounds; r = r + 1){
