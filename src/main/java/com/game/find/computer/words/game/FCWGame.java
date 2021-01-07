@@ -20,7 +20,8 @@ public class FCWGame {
     private int nRounds;
     private String p1Word;
     private String p2Word;    
-    private double [] p1Points, p2Points;
+    private double [] p1Points;
+    private double [] p2Points;
     private double p1Total, p2Total;
     private final String [] alphabet;
     private final String [] validWords;
@@ -157,8 +158,8 @@ public class FCWGame {
             if (wordList.contains(p2Word.toLowerCase())){
                 if (!p2Word.equals(p1Word)){
                     if(p2Word.contains("a") && p2Word.contains("e")){
-                        JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p2Points[nRounds-1] + " points for the round: " + (nRounds));
                         p2Points[nRounds-1] = 2.5;
+                        JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p2Points[nRounds-1] + " points for the round: " + (nRounds));
                     } else {
                         p2Points[nRounds-1] = p2Word.length();
                         JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p2Points[nRounds-1] + " points for the round: " + (nRounds));
