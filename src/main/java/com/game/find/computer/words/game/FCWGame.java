@@ -38,8 +38,8 @@ public class FCWGame {
         this.nRounds = nRounds;
         this.p1Word = p1Word;
         this.p2Word = p2Word;
-        p1Points = new double [nRounds];
-        p2Points = new double [nRounds];
+        this.p1Points = p1Points;
+        this.p2Points = p2Points;
         p1Total = 0.0;
         p2Total = 0.0;
         rLetters = new String [12];
@@ -50,6 +50,11 @@ public class FCWGame {
 
     /*--- SETTERS ---*/
 
+    public void setP1Points(double[] p1Points) {
+        this.p1Points = p1Points;
+    }
+
+    
     public void setnRounds(int nRounds) {
         this.nRounds = nRounds;
     }
@@ -65,14 +70,11 @@ public class FCWGame {
     /*--- PROCESS --- */
     public void computeP1(){
         if (wordList.contains(p1Word.toLowerCase())){
-            
-            for (int nLetters = 0; nLetters < p1Word.length(); nLetters++){
-                if (randomLetters.contains(p1Word.charAt(nLetters))){
+                if (randomLetters.contains(p1Word)){
                     JOptionPane.showMessageDialog(null, "It is working :)");
                 } else {
                     JOptionPane.showMessageDialog(null, "Nop, not this time");
-                }
-            }         
+                }     
         }else {
             JOptionPane.showMessageDialog(null, "no points");
         }
@@ -134,43 +136,41 @@ public class FCWGame {
     } */
 
     public double[] getP1Points() {
-        for (int i = 0; i < nRounds; i++){
+        
              if (wordList.contains(p1Word.toLowerCase())){
                  if(p1Word.contains("a") && p1Word.contains("e")){
-                     JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p1Points[i] + " points for the round: " + (i+1));
-                     p1Points[i] = 2.5;
+                     p1Points[nRounds -1] = 2.5;
+                     JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p1Points[nRounds-1] + " points for the round: " + (nRounds));
                  } else {
-                     p1Points[i] = p1Word.length();
-                     JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p1Points[i] + " points for the round: " + (i+1));
+                     p1Points[nRounds-1] = p1Word.length();
+                     JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p1Points[nRounds-1] + " points for the round: " + (nRounds));
                  }
              } else {
-                 p1Points[i] = 0.0;
-                JOptionPane.showMessageDialog(null, "Sorry, that is not a valid word. You got " + p1Points[i] + " points for the round: " + (i+1)); 
+                 p1Points[nRounds-1] = 0.0;
+                JOptionPane.showMessageDialog(null, "Sorry, that is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
              }
-        }
+        
         return p1Points;
     }
 
     public double[] getP2Points() {
-        for (int i = 0; i < nRounds; i++){
-             if (wordList.contains(p2Word.toLowerCase())){
-                 if (!p2Word.equals(p1Word)){
+            if (wordList.contains(p2Word.toLowerCase())){
+                if (!p2Word.equals(p1Word)){
                     if(p2Word.contains("a") && p2Word.contains("e")){
-                        JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p2Points[i] + " points for the round: " + (i+1));
-                        p2Points[i] = 2.5;
+                        JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p2Points[nRounds-1] + " points for the round: " + (nRounds));
+                        p2Points[nRounds-1] = 2.5;
                     } else {
-                        p2Points[i] = p2Word.length();
-                        JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p2Points[i] + " points for the round: " + (i+1));
-                    }
-                 }else {
-                     p2Points[i] = 0.0;
-                     JOptionPane.showMessageDialog(null, "Sorry, you can not use the word " + p1Word +  " you got " + p2Points[i] + " points for the round: " + (i+1));
-                 }
-             } else {
-                 p2Points[i] = 0.0;
-                 JOptionPane.showMessageDialog(null, "Sorry, that is not a valid word. You got " + p2Points[i] + " points for the round: " + (i+1));
-             }           
-        }
+                        p2Points[nRounds-1] = p2Word.length();
+                        JOptionPane.showMessageDialog(null, "That is a valid word, you got " + p2Points[nRounds-1] + " points for the round: " + (nRounds));
+                   }
+                }else {
+                    p2Points[nRounds-1] = 0.0;
+                    JOptionPane.showMessageDialog(null, "Sorry, you can not use the word " + p1Word +  " you got " + p2Points[nRounds-1] + " points for the round: " + (nRounds-1));
+                }
+            } else {
+                p2Points[nRounds-1] = 0.0;
+                JOptionPane.showMessageDialog(null, "Sorry, that is not a valid word. You got " + p2Points[nRounds-1] + " points for the round: " + (nRounds-1));
+            }           
         return p2Points;
     }
 
