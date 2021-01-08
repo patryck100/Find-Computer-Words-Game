@@ -103,7 +103,7 @@ public class FCWGame {
                 //}
            // }
         //}
-        if (rdmLetters.contains(p1Word.toUpperCase())){
+        //if (rdmLetters.contains(p1Word.toUpperCase())){
                 if (wordList.contains(p1Word.toLowerCase())){
                     if(p1Word.contains("a") && p1Word.contains("e")){
                         p1Points[nRounds-1] = 2.5;
@@ -116,9 +116,9 @@ public class FCWGame {
                     p1Points[nRounds-1] = 0.0;
                     JOptionPane.showMessageDialog(null, "Sorry, the word '" + p1Word + "' is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
                 }        
-        } else {
-            JOptionPane.showMessageDialog(null, "Sorry, the word '" + p1Word + "' is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
-        } 
+        //} else {
+          //  JOptionPane.showMessageDialog(null, "Sorry, the word '" + p1Word + "' is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
+        //} 
             for (int r = 0; r < p1Points.length; r = r + 1){  
                 p1Total = p1Total + p1Points[nRounds-1];
                 break;
