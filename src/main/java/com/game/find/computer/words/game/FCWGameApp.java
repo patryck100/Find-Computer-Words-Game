@@ -19,7 +19,7 @@ public class FCWGameApp {
         String p1Word, p2Word;
         double[] p1Points, p2Points;
         double p1Total, p2Total;
-        String[] letters = new String[12];
+        String[] rLetters;
         int round = 0;
         
         /* DECLARE AND CREATE OBJECTS */
@@ -40,21 +40,22 @@ public class FCWGameApp {
         
         //This loop allows the user to play the amount of rounds they set before
         for (int r = 0; r < nRounds; r = r + 1){
-            letters = fcwg.getrLetters();
+            fcwg.computeRLetters();
+            rLetters = fcwg.getrLetters();
             fcwg.setP1Points(p1Points);
             fcwg.setP2Points(p2Points);
             round++;
             fcwg.setnRounds(round);
             
             
-            JOptionPane.showMessageDialog(null, "Make a valid word by using only those letters once each: " + Arrays.toString(letters));
+            JOptionPane.showMessageDialog(null, "Round " + (r+1) + ", please make a valid word using those letters only once each: " + Arrays.toString(rLetters));
             p1Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
-                                                                "\nLetters: " + Arrays.toString(letters));
+                                                                "\nLetters: " + Arrays.toString(rLetters));
             fcwg.setP1Word(p1Word);
             fcwg.computeP1Points();
             
             p2Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
-                                                                "\nLetters: " + Arrays.toString(letters) +
+                                                                "\nLetters: " + Arrays.toString(rLetters) +
                                                                 "\nYour are not allowed to use the word: " + p1Word);
             fcwg.setP2Word(p2Word);
             fcwg.computeP2Points();
