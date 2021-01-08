@@ -3,15 +3,9 @@ package com.game.find.computer.words.game;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author patry
+ * @author patryck brenner
  */
 public class FCWGameApp {
 
@@ -25,7 +19,6 @@ public class FCWGameApp {
         String p1Word, p2Word;
         double[] p1Points, p2Points;
         double p1Total, p2Total;
-        String Winner;
         String[] letters = new String[12];
         int round = 0;
         
@@ -45,35 +38,43 @@ public class FCWGameApp {
         p1Points = new double [nRounds];
         p2Points = new double [nRounds];
         
-        //This loop allows the user to enter the amount of rounds they want to play
+        //This loop allows the user to play the amount of rounds they set before
         for (int r = 0; r < nRounds; r = r + 1){
             letters = fcwg.getrLetters();
-            fcwg.setP1Points(p1Points);                 
+            fcwg.setP1Points(p1Points);
+            fcwg.setP2Points(p2Points);
             round++;
             fcwg.setnRounds(round);
+            
             
             JOptionPane.showMessageDialog(null, "Make a valid word by using only those letters once each: " + Arrays.toString(letters));
             p1Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
                                                                 "\nLetters: " + Arrays.toString(letters));
             fcwg.setP1Word(p1Word);
-            p1Points = fcwg.getP1Points();
+            fcwg.computeP1Points();
+            
             p2Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
                                                                 "\nLetters: " + Arrays.toString(letters) +
                                                                 "\nYour are not allowed to use the word: " + p1Word);
             fcwg.setP2Word(p2Word);
-            p2Points = fcwg.getP2Points();
+            fcwg.computeP2Points();
+            fcwg.computeWinner();
+            
+            /* OUTPUT */
+            if (round == nRounds){   
+                JOptionPane.showMessageDialog(null, fcwg.toString());
+            }
             
             
             
             
-            
-        }
+        }// end of loop
         
-        /* PROCESS */
+
         
         
         
-        /* OUTPUT */
+        
         
     }
     
