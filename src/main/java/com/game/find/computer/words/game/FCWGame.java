@@ -75,10 +75,10 @@ public class FCWGame {
     
     /*--- PROCESS --- */
     public void computeRLetters(){
-        for (int i = 0; i < 12; i++){
-            rLetters[i] = alphabet[(int)(Math.random()*26)];
-        }
-       /* rLetters [0] = "A";
+        //for (int i = 0; i < 12; i++){
+          //  rLetters[i] = alphabet[(int)(Math.random()*26)];
+        //}
+        rLetters [0] = "A";
         rLetters [1] = "A";
         rLetters [2] = "M";
         rLetters [3] = "E";
@@ -90,7 +90,7 @@ public class FCWGame {
         rLetters [9] = "C";
         rLetters [10] = "M";
         rLetters [11] = "N";
-        */
+        
     }
     
     public void computeP1Points(){
@@ -103,7 +103,7 @@ public class FCWGame {
                 //}
            // }
         //}
-        //if (p1Word.equals(confirmP1.toString())){
+        if (rdmLetters.contains(p1Word.toUpperCase())){
                 if (wordList.contains(p1Word.toLowerCase())){
                     if(p1Word.contains("a") && p1Word.contains("e")){
                         p1Points[nRounds-1] = 2.5;
@@ -116,9 +116,9 @@ public class FCWGame {
                     p1Points[nRounds-1] = 0.0;
                     JOptionPane.showMessageDialog(null, "Sorry, the word '" + p1Word + "' is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
                 }        
-        //} else {
-          //  JOptionPane.showMessageDialog(null, "Sorry, the word '" + p1Word + "' is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
-        //} 
+        } else {
+            JOptionPane.showMessageDialog(null, "Sorry, the word '" + p1Word + "' is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
+        } 
             for (int r = 0; r < p1Points.length; r = r + 1){  
                 p1Total = p1Total + p1Points[nRounds-1];
                 break;
