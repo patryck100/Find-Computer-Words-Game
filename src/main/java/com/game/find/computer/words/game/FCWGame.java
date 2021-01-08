@@ -21,9 +21,10 @@ public class FCWGame {
     private double [] p2Points;
     private double p1Total, p2Total;
     private String [] rLetters;
-    private ArrayList<String> randomLetters;
+    private ArrayList<String> rdmLetters;
     private String winner;
-    //private StringBuffer rLetter;
+    private StringBuffer confirmP1;
+    private StringBuffer confirmP2;
     
     //constant
     private final String [] alphabet;
@@ -42,9 +43,10 @@ public class FCWGame {
         p1Total = 0.0;
         p2Total = 0.0;
         rLetters = new String [12];
-        //rLetter = new StringBuffer();
+        confirmP1 = new StringBuffer();
+        confirmP2 = new StringBuffer();
         wordList = new ArrayList<String>(Arrays.asList(validWords));
-        randomLetters = new ArrayList<String>(Arrays.asList(rLetters));
+        rdmLetters = new ArrayList<String>(Arrays.asList(rLetters));
         winner = winner;
     }
 
@@ -72,26 +74,56 @@ public class FCWGame {
     }
     
     /*--- PROCESS --- */
- 
-    public void computeP1Points(){
-             if (wordList.contains(p1Word.toLowerCase())){
-                 if(p1Word.contains("a") && p1Word.contains("e")){
-                     p1Points[nRounds-1] = 2.5;
-                     JOptionPane.showMessageDialog(null, "The word '" +p1Word + "' is a valid word, you got " + p1Points[nRounds-1] + " points for the round: " + (nRounds));
-                 } else {
-                     p1Points[nRounds-1] = p1Word.length();
-                     JOptionPane.showMessageDialog(null, "The word '" +p1Word + "' is a valid word, you got " + p1Points[nRounds-1] + " points for the round: " + (nRounds));
-                 }
-             } else {
-                 p1Points[nRounds-1] = 0.0;
-                JOptionPane.showMessageDialog(null, "Sorry, the word '" + p1Word + "' is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
-             }        
-        for (int r = 0; r < p1Points.length; r = r + 1){  
-            p1Total = p1Total + p1Points[nRounds-1];
-            break;
+    public void computeRLetters(){
+        for (int i = 0; i < 12; i++){
+            rLetters[i] = alphabet[(int)(Math.random()*26)];
         }
-    }   
+       /* rLetters [0] = "A";
+        rLetters [1] = "A";
+        rLetters [2] = "M";
+        rLetters [3] = "E";
+        rLetters [4] = "L";
+        rLetters [5] = "I";
+        rLetters [6] = "P";
+        rLetters [7] = "T";
+        rLetters [8] = "J";
+        rLetters [9] = "C";
+        rLetters [10] = "M";
+        rLetters [11] = "N";
+        */
+    }
     
+    public void computeP1Points(){
+        //confirmP1 = new StringBuffer();
+        //for (int r = 1; r <= p1Word.length(); r++){
+          //  for (int s = 0; s < rLetters.length; s++){
+            //    if (p1Word.charAt(r) == rdmLetters.toString().charAt(s)){
+              //      confirmP1.append(p1Word.charAt(r));
+                //    break;
+                //}
+           // }
+        //}
+        //if (p1Word.equals(confirmP1.toString())){
+                if (wordList.contains(p1Word.toLowerCase())){
+                    if(p1Word.contains("a") && p1Word.contains("e")){
+                        p1Points[nRounds-1] = 2.5;
+                        JOptionPane.showMessageDialog(null, "The word '" +p1Word + "' is a valid word, you got " + p1Points[nRounds-1] + " points for the round: " + (nRounds));
+                    }else {
+                        p1Points[nRounds-1] = p1Word.length();
+                        JOptionPane.showMessageDialog(null, "The word '" +p1Word + "' is a valid word, you got " + p1Points[nRounds-1] + " points for the round: " + (nRounds));
+                    }
+                }   else {
+                    p1Points[nRounds-1] = 0.0;
+                    JOptionPane.showMessageDialog(null, "Sorry, the word '" + p1Word + "' is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
+                }        
+        //} else {
+          //  JOptionPane.showMessageDialog(null, "Sorry, the word '" + p1Word + "' is not a valid word. You got " + p1Points[nRounds-1] + " points for the round: " + (nRounds)); 
+        //} 
+            for (int r = 0; r < p1Points.length; r = r + 1){  
+                p1Total = p1Total + p1Points[nRounds-1];
+                break;
+            }        
+    }
     public void computeP2Points(){
             if (wordList.contains(p2Word.toLowerCase())){
                 if (!p2Word.equals(p1Word)){
@@ -138,22 +170,6 @@ public class FCWGame {
 
     /* Generates 12 letters */
     public String[] getrLetters() {
-        //for (int i = 0; i < 12; i++){
-          //  rLetters[i] = alphabet[(int)(Math.random()*26)];
-        //}
-        rLetters [0] = "A";
-        rLetters [1] = "A";
-        rLetters [2] = "M";
-        rLetters [3] = "E";
-        rLetters [4] = "L";
-        rLetters [5] = "I";
-        rLetters [6] = "P";
-        rLetters [7] = "T";
-        rLetters [8] = "J";
-        rLetters [9] = "C";
-        rLetters [10] = "M";
-        rLetters [11] = "N";
-        
         return rLetters;
     }
 
