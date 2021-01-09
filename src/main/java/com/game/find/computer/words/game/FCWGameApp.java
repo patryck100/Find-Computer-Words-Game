@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author patryck brenner
+ * @author Patryck Brenner
  */
 public class FCWGameApp {
 
@@ -19,7 +19,8 @@ public class FCWGameApp {
         String p1Word, p2Word;
         double[] p1Points, p2Points;
         double p1Total, p2Total;
-        String[] rLetters;
+        char [] rLetters;
+        //String rLetter;
         int round = 0;
         
         /* DECLARE AND CREATE OBJECTS */
@@ -42,20 +43,21 @@ public class FCWGameApp {
         for (int r = 0; r < nRounds; r = r + 1){
             fcwg.computeRLetters();
             rLetters = fcwg.getrLetters();
+            //rLetter = fcwg.getrLetter();
             fcwg.setP1Points(p1Points);
             fcwg.setP2Points(p2Points);
             round++;
             fcwg.setnRounds(round);
             
             
-            JOptionPane.showMessageDialog(null, "Round " + (r+1) + ", please make a valid word using those letters only once each: " + Arrays.toString(rLetters));
+            JOptionPane.showMessageDialog(null, "Round " + (r+1) + ", please make a valid word using those letters only once each: " + Arrays.toString(rLetters) /*rLetter*/);
             p1Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
-                                                                "\nLetters: " + Arrays.toString(rLetters));
+                                                                "\nLetters: " + Arrays.toString(rLetters) /*rLetter*/);
             fcwg.setP1Word(p1Word);
             fcwg.computeP1Points();
             
             p2Word = JOptionPane.showInputDialog(null, "Please enter your word for round " + (r+1) +
-                                                                "\nLetters: " + Arrays.toString(rLetters) +
+                                                                "\nLetters: " + Arrays.toString(rLetters) /*rLetter*/ +
                                                                 "\nYour are not allowed to use the word: " + p1Word);
             fcwg.setP2Word(p2Word);
             fcwg.computeP2Points();
