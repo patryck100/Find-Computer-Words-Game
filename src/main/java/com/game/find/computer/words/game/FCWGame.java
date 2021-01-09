@@ -84,12 +84,12 @@ public class FCWGame {
     // Generates 12 random letters
     public void computeRLetters(){
         // Pick 1 by 1 random letter from the Array "Alphabet" 12 times and insert into "rLetters" Array
-        //for (int i = 0; i < 12; i++){
-          //  rLetters[i] = alphabet[(int)(Math.random()*26)];
-        //}// end of loop
+        for (int i = 0; i < 12; i++){
+            rLetters[i] = alphabet[(int)(Math.random()* alphabet.length)];
+        }// end of loop
         
         //Method used to test if the input from the user would match with the letters given by the computer
-        rLetters [0] = 'A';
+        /*rLetters [0] = 'A';
         rLetters [1] = 'V';
         rLetters [2] = 'M';
         rLetters [3] = 'E';
@@ -100,7 +100,7 @@ public class FCWGame {
         rLetters [8] = 'J';
         rLetters [9] = 'C';
         rLetters [10] = 'M';
-        rLetters [11] = 'N'; 
+        rLetters [11] = 'N'; */ 
     } // end of computeRLetters
     
     //Calculates points for the player 1
