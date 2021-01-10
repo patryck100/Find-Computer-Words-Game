@@ -89,18 +89,18 @@ public class FCWGame {
         }// end of loop
         
         //Method used to test if the input from the user would match with the letters given by the computer
-        /*rLetters [0] = 'A';
-        rLetters [1] = 'V';
-        rLetters [2] = 'M';
-        rLetters [3] = 'E';
-        rLetters [4] = 'L';
+        /*rLetters [0] = 'E';
+        rLetters [1] = 'I';
+        rLetters [2] = 'N';
+        rLetters [3] = 'M';
+        rLetters [4] = 'A';
         rLetters [5] = 'I';
         rLetters [6] = 'P';
-        rLetters [7] = 'T';
-        rLetters [8] = 'J';
+        rLetters [7] = 'L';
+        rLetters [8] = 'T';
         rLetters [9] = 'C';
-        rLetters [10] = 'M';
-        rLetters [11] = 'N'; */ 
+        rLetters [10] = 'O';
+        rLetters [11] = 'N';*/  
     } // end of computeRLetters
     
     //Calculates points for the player 1
@@ -263,22 +263,6 @@ public class FCWGame {
         rLetter.append("Elmlaaiela");
         return rLetter.toString();
     } */
-
-    public double[] getP1Points() {     
-        return p1Points;
-    }
-
-    public double[] getP2Points() {         
-        return p2Points;
-    }
-
-    public double getP1Total() {
-        return p1Total;
-    }
-
-    public double getP2Total() {      
-        return p2Total;
-    }
 
     @Override
     public String toString() {
