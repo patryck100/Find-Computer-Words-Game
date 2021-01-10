@@ -243,7 +243,7 @@ public class FCWGame {
     
     /*--- GETTERS --- */
 
-    public char[] getrLetters() {
+    public char[] getRLetters() {
         return rLetters;
     }
  
