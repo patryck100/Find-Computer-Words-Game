@@ -39,7 +39,6 @@ public class FCWGameApp {
         p1Points = new double [nRounds];
         p2Points = new double [nRounds];
 
-        
         //This loop allows the user to play the amount of rounds they set before
         for (int r = 0; r < nRounds; r = r + 1){
             //compute the 12 letters
