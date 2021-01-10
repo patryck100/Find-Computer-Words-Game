@@ -38,7 +38,7 @@ public class FCWGameApp {
         nRounds = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the number of rounds you would like to play: "));
         p1Points = new double [nRounds];
         p2Points = new double [nRounds];
-        
+
         //This loop allows the user to play the amount of rounds they set before
         for (int r = 0; r < nRounds; r = r + 1){
             //compute the 12 letters
@@ -59,14 +59,14 @@ public class FCWGameApp {
             p1Word = JOptionPane.showInputDialog(null, "Player 1, please enter your word for round " + (r+1) +
                                                                 "\nLetters: " + Arrays.toString(rLetters));
             //collect the word given by the user and calculate its points
-            fcwg.setP1Word(p1Word);
+            fcwg.setP1Word(p1Word.toLowerCase());
             fcwg.computeP1Points();
             
             p2Word = JOptionPane.showInputDialog(null, "Player 2, please enter your word for round " + (r+1) +
                                                                 "\nLetters: " + Arrays.toString(rLetters) +
                                                                 "\nYour are not allowed to use the word: " + p1Word);
             //collect the word given by the user and calculate its points
-            fcwg.setP2Word(p2Word);
+            fcwg.setP2Word(p2Word.toLowerCase());
             fcwg.computeP2Points();
             
             //compute who the winner is
