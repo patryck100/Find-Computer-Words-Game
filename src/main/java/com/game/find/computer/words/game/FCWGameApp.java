@@ -18,7 +18,6 @@ public class FCWGameApp {
         int nRounds = 0;
         String p1Word, p2Word;
         double[] p1Points, p2Points;
-        double p1Total, p2Total;
         char [] rLetters;
         int round = 0;
         
@@ -45,7 +44,7 @@ public class FCWGameApp {
             //compute the 12 letters
             fcwg.computeRLetters();
             //set values of the 12 letters to variable rLetters
-            rLetters = fcwg.getrLetters();
+            rLetters = fcwg.getRLetters();
             
             //set size to the Arrays "Points" according to the number of rounds
             fcwg.setP1Points(p1Points);
