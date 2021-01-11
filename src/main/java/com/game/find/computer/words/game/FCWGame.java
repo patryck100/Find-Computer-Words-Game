@@ -247,22 +247,6 @@ public class FCWGame {
         return rLetters;
     }
  
-    
-    //first attempt, I couldn't check if the letters matched with the words made by the players
-    /* Generates 12 letters */ 
-    /*public String getRLetter(){
-        rLetter = new StringBuffer();
-        for (int i = 0; i < 12; i++){
-                int randomL = (int)(Math.random()*26);
-            if (i<11){
-                rLetter.append(alphabet.charAt(randomL) + " ");
-            }else {
-                rLetter.append(alphabet.charAt(randomL) + ".");
-            }
-        }
-        rLetter.append("Elmlaaiela");
-        return rLetter.toString();
-    } */
 
     @Override
     public String toString() {
